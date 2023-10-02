@@ -1,0 +1,6 @@
+ckpts
+data
+*.ipynb
+pretrained
+notebooks
+__pycache__

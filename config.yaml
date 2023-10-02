@@ -1,0 +1,18 @@
+device: cuda
+max_length: 192
+source_length: 192
+target_len: 192
+source_text: source
+target_text: target
+
+accumulation_steps: 1
+n_epoch: 4
+batch_size: 8
+n_worker: 4
+lr: 2e-5
+
+eval_and_save_per_step: 50000
+ckpt_dir: "ckpts"
+train_dir: "/data/codes/machine_translation/data/prep_aca_feedback/train"
+test_dir: "/data/codes/machine_translation/data/prep_aca_feedback/test"
+val_dir: "/data/codes/machine_translation/data/prep_aca_feedback/dev"
