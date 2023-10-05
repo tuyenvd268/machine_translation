@@ -81,20 +81,36 @@ def init_dataset_and_dataloader(config, tokenizer):
     valdata = load_data(data_dir=config.val_dir, tokenizer=tokenizer)
 
     trainset = EnViT5Dataset(
-        traindata, tokenizer=tokenizer, source_len=config.source_length, 
-        target_len=config.target_len, source_text=config.source_text, target_text=config.target_text)
+        traindata, tokenizer=tokenizer, 
+        source_len=config.source_length, 
+        target_len=config.target_len, 
+        source_text=config.source_text, 
+        target_text=config.target_text)
+
     testset = EnViT5Dataset(
-        testdata, tokenizer=tokenizer, source_len=config.source_length, 
-        target_len=config.target_len, source_text=config.source_text, target_text=config.target_text)
+        testdata, tokenizer=tokenizer, 
+        source_len=config.source_length, 
+        target_len=config.target_len, 
+        source_text=config.source_text, 
+        target_text=config.target_text)
+
     valset = EnViT5Dataset(
-        valdata, tokenizer=tokenizer, source_len=config.source_length, 
-        target_len=config.target_len, source_text=config.source_text, target_text=config.target_text)
+        valdata, tokenizer=tokenizer, 
+        source_len=config.source_length, 
+        target_len=config.target_len, 
+        source_text=config.source_text, 
+        target_text=config.target_text)
     
     sampler = DistributedSampler(dataset=trainset, shuffle=True)
+
     trainloader = DataLoader(
-        dataset=trainset, batch_size=config.batch_size, sampler=sampler, shuffle=False, num_workers=config.n_worker)
+        dataset=trainset, batch_size=config.batch_size, 
+        sampler=sampler, shuffle=False, num_workers=config.n_worker)
+    
     testloader = DataLoader(
-        dataset=testset, batch_size=config.batch_size, shuffle=False, num_workers=config.n_worker)
+        dataset=testset, batch_size=config.batch_size, 
+        shuffle=False, num_workers=config.n_worker
+    )
     valloader = DataLoader(
         dataset=valset, batch_size=config.batch_size, shuffle=False, num_workers=config.n_worker)
     

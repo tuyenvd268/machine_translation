@@ -4,3 +4,4 @@ data
 pretrained
 notebooks
 __pycache__
+*.bin
